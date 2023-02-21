@@ -1,0 +1,30 @@
+void BinarySearchLASTOCCURENCE(vector<int> arr, int target){
+	
+	int start, end, mid ,firstocc;
+	start=0;
+	end= arr.size()-1;
+	mid = start + ((end-start)/2);
+	
+	while(start <= end)
+	{
+		if(arr[mid]==target){  // if target found at mid store it + try to search in right part 
+			firstocc = mid;    // as last occurence can be on right side only if present else this only.
+			start = mid + 1;
+		}
+		else if( target < arr[mid]){
+			end = mid - 1;
+		}
+		else
+			start = mid + 1;
+			
+		mid = start + ((end-start)/2);
+	}
+	cout<<firstocc;
+	
+}
+
+int main() {
+  vector<int> arr = {1,2,3,3,3,4,5,6};
+  BinarySearchLASTOCCURENCE(arr, 3);
+  cout<<endl<<"done";
+}
