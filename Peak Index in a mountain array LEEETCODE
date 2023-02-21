@@ -1,0 +1,25 @@
+int PeakElement(vector<int> arr){                           
+	
+	int start, end, mid ;
+	start=0;
+	end= arr.size()-1;
+	mid = start + ((end-start)/2);
+	
+	while(start < end)
+	{
+		if( arr[mid] < arr[mid+1]){  //Sure that mid is left line of mountain
+			start = mid + 1;
+		}
+		else       // may be end is peak or on right line of mountain
+			end = mid;  // whenever use end = mid or start - mid , in while neve use <= just < or >
+			
+		mid = start + ((end-start)/2);
+	}
+	return start;
+	
+} 
+
+int main() {
+  vector<int> arr = {1,20,10,5,15,2};
+  cout<<endl<<"Peak Element : "<<arr[PeakElement(arr)];
+}
