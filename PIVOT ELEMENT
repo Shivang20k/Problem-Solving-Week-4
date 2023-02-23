@@ -22,7 +22,7 @@ int PivotElement(vector<int> arr){
 			return mid-1;
 			
 			
-		if(arr[start] > arr[mid])  // means mid is on other slope so search for peak Element on left
+		if(arr[start] > arr[mid])  // means mid is on other slope so search for peak Element on left as left slope's 1st element will always be greater than any element on right slope
 			end = mid-1;
 		else       
 			start = mid;  
