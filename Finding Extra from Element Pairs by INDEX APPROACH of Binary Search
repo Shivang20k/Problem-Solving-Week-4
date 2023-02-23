@@ -1,0 +1,42 @@
+
+int findExtraElementFromPairs(vector<int> arr )  //please see video week 4 lec 3, leetcode 540
+{
+	int start =0;
+	int end = arr.size();
+	int mid = ( start +  (end - start)/2);
+	int ans = -1;
+	
+	while(start <= end)
+	{
+		if(start == end)//one element in array
+		{
+			ans = arr[start];
+			return ans;
+		}
+		
+		
+		if( (mid & 1) == 0 )  //even mid
+		{ 
+			if(arr[mid]  == arr[mid+1]) // on left of extra element as before extra element, for pairs 1st occr. is even index & 2nd occr. is odd index
+				start = mid + 2; //doind mid +2 as mid & mid+1 already checked, now go to right part
+			else
+				end = mid;  //not doing end=mid+1 , so mid element is not skipped
+		}
+		else //odd mid
+		{
+			if(arr[mid]  == arr[mid-1])
+				start = mid + 1;
+			else
+				end = mid;
+		}
+		
+		mid = ( start +  (end - start)/2);
+	}
+	
+	return ans;
+}
+
+int main() {
+  vector<int> arr = {1,1,2,2,3,4,4,5,5,6,6};
+  cout<<endl<<findExtraElementFromPairs(arr);
+}
