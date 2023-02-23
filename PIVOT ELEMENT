@@ -1,0 +1,39 @@
+(pivot element is one wheere order of sorted array breaks)
+
+#include <iostream>
+#include <bits/stdc++.h>
+#include <math.h>
+#include<vector> 
+using namespace std;
+
+int PivotElement(vector<int> arr){
+	
+	int start, end, mid ;
+	start=0;
+	end= arr.size()-1;
+	mid = start + ((end-start)/2);
+	
+	while(start < end)
+	{
+		if( arr[mid+1]< arr.size() && arr[mid] > arr[mid+1]){  //Sure that mid is left line of mountain
+			return  mid;
+		}
+		if( arr[mid-1]>=0 && arr[mid-1] > arr[mid])
+			return mid-1;
+			
+			
+		if(arr[start] > arr[mid])  // means mid is on other slope so search for peak Element on left
+			end = mid-1;
+		else       
+			start = mid;  
+			
+		mid = start + ((end-start)/2);
+	}
+	return -1;
+	
+}
+
+int main() {
+  vector<int> arr = {1,2,3,4,5,6, 7,  1,2,3};
+  cout<<endl<<"Pivot Element : "<<PivotElement(arr); //ans is 7 as after 7 there is another array which is also sorted.
+}
