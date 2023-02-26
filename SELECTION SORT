@@ -1,0 +1,32 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <math.h>
+#include<vector> 
+using namespace std;
+
+
+
+vector<int> selection_sort(vector<int> arr )  
+{
+	for(int i =0 ; i< arr.size() ; i++)
+	{
+		int elementL = arr[i];
+		int min_index = i;
+		//find min. element in right part of i
+		for ( int j = i+1; j<arr.size(); j++)
+		{
+			min_index = (arr[j] < arr[i]) ? j : min_index;
+		}
+		swap(arr[i], arr[min_index]);
+
+	}
+	
+	return arr;
+}
+
+int main() {
+  vector<int> arr = {10 , 9 , 8 ,7 ,6};
+  arr = selection_sort(arr);
+  for(auto i : arr)
+	cout<<i<<" ";
+}
