@@ -4,7 +4,7 @@
 #include<vector> 
 using namespace std;
 
-
+//PUTTING Ith Element at I th Position.
 
 vector<int> selection_sort(vector<int> arr )  
 {
